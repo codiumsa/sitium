@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "main#index"
-    
+    get ':entry_type', to: 'entries#index', as: 'entry_type'
+    resources :entries, only: [:new, :edit, :create, :update, :destroy], path: ':entry_type'
   end
 
   if Rails.env.development?

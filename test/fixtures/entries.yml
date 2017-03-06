@@ -6,7 +6,7 @@ one:
   description: MyString
   content: MyText
   status: MyString
-  entry_type: 
+  entry_type: article
   user_id: 1
   published_at: 2017-03-05 22:28:55
 
@@ -16,6 +16,6 @@ two:
   description: MyString
   content: MyText
   status: MyString
-  entry_type: 
+  entry_type: page
   user_id: 1
   published_at: 2017-03-05 22:28:55
