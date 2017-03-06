@@ -24,7 +24,13 @@ class Entry < ApplicationRecord
   scope :hidden, -> { where(status: 'hidden') }
   scope :deleted, -> { where(status: 'deleted') }
 
+  scope :default_sort, -> { order("published_at DESC, updated_at DESC") }
+
   before_save :add_published_date
+
+  def entry_type_route
+    self.entry_type.pluralize
+  end
   
   private
   def add_published_date

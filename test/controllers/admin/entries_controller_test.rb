@@ -5,7 +5,7 @@ class Admin::EntriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get correct route according to entry_type" do
     e = entries(:one)
-    assert_generates "/admin/#{e.entry_type}/#{e.id}/edit", { controller: 'admin/entries', action: 'edit', entry_type: e.entry_type, id: e.id }
+    assert_generates "/admin/#{e.entry_type_route}/#{e.id}/edit", { controller: 'admin/entries', action: 'edit', entry_type: e.entry_type_route, id: e.id }
   end
 
 end
