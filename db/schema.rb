@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306013948) do
+ActiveRecord::Schema.define(version: 20170308012720) do
 
   create_table "entries", force: :cascade do |t|
     t.string   "title",                                null: false
@@ -27,9 +27,21 @@ ActiveRecord::Schema.define(version: 20170306013948) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "locale",             default: "es"
     t.index ["entry_type"], name: "index_entries_on_entry_type"
     t.index ["slug"], name: "index_entries_on_slug"
     t.index ["status"], name: "index_entries_on_status"
+  end
+
+  create_table "entry_translations", force: :cascade do |t|
+    t.string   "locale",      default: "es"
+    t.string   "title",                      null: false
+    t.string   "slug",                       null: false
+    t.string   "description"
+    t.string   "content"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["slug"], name: "index_entry_translations_on_slug"
   end
 
   create_table "users", force: :cascade do |t|

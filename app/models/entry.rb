@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
   belongs_to :user
+  has_many :entry_translations
   has_attached_file :image,
     path: ':rails_root/public/system/entries/:id/:style/:filename',
     url: '/images/entries/:id/:style/:filename',
@@ -30,6 +31,10 @@ class Entry < ApplicationRecord
 
   def entry_type_route
     self.entry_type.pluralize
+  end
+
+  def translated
+    self.entry_translations.find_by(locale: I18n.locale.to_s)
   end
   
   private
